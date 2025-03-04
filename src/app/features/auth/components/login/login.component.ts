@@ -32,7 +32,7 @@ export class LoginComponent {
       next: (token) => {
         this.authService.setToken(token);
         this.snackBar.show("Login successful!");
-        this.router.navigate(['/repository-search']);
+        this.router.navigate(['/transaction-chart']);
       },
       error: (err) => {
         this.snackBar.show("Login Failed ");

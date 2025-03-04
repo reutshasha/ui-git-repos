@@ -1,0 +1,20 @@
+<p>transaction-chart works!</p>
+<!-- <app-header [dateRange]="dateRangeText"></app-header> -->
+
+<div class="filter-container">
+  <label>From:</label>
+  <input type="date" formControlName="fromDate">
+  <label>To:</label>
+  <input type="date" formControlName="toDate">
+  <button (click)="applyFilter()">Filter</button>
+</div>
+
+<div class="chart-container">
+  <canvas baseChart
+    [data]="chartData"
+    [options]="chartOptions"
+    [type]="'line'">
+  </canvas>
+</div>
+
+<!-- <app-footer></app-footer> -->

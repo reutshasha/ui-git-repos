@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { GitHubRepository, GitHubSearchResult } from '../../shared/models/GitHubRepository';
 import { environment } from '../../../environments/environment';
+import { GroceryTransaction } from '../../shared/models/GroceryTransaction';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,22 @@ export class ApiService {
 
   login(username: string, password: string): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}Auth/login`, { username, password });
+  }
+
+
+  // getTransactionsByDateRange(): Observable<GitHubRepository[]> {
+  //   return this.http.get<GitHubRepository[]>(`${this.baseUrl}Favorite/GetFavorites`);
+  // }
+  getTransactionsByDateRange(startDate: string, endDate: string): Observable<GroceryTransaction[]> {
+    const params = new HttpParams()
+       .set('startDate', startDate)
+      .set('endDate', endDate);
+    // .set('startDate', startDate.toISOString()) // המרת התאריך לפורמט ISO
+    // .set('endDate', endDate.toISOString());   // המרת התאריך לפורמט ISO
+      debugger
+      console.log('startDate.toISOString()' + startDate );
+      // console.log('startDate' + startDate );
+    return this.http.get<GroceryTransaction[]>(this.baseUrl + ' Grocery/transactions', { params });
   }
 
   searchRepositories(query: string, page: number, perPage: number): Observable<GitHubSearchResult> {

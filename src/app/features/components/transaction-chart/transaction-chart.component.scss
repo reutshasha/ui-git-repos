@@ -1,0 +1,26 @@
+.filter-container {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+    align-items: center;
+  }
+  
+  button {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
