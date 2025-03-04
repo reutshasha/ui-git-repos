@@ -36,23 +36,23 @@ export class TransactionChartComponent {
   form: FormGroup | undefined;
   dateRangeText = '1.6.21 - 31.12.21';
 
-  @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
+  // @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
 
-  chartData: ChartData<'line'> = {
-    labels: [],
-    datasets: [
-      { data: [], label: 'Income', borderColor: 'red', backgroundColor: 'rgba(255,0,0,0.2)' },
-      { data: [], label: 'Outcome', borderColor: 'blue', backgroundColor: 'rgba(0,0,255,0.2)' },
-      { data: [], label: 'Revenue', borderColor: 'green', backgroundColor: 'rgba(0,255,0,0.2)' }
-    ]
-  };
+  // chartData: ChartData<'line'> = {
+  //   labels: [],
+  //   datasets: [
+  //     { data: [], label: 'Income', borderColor: 'red', backgroundColor: 'rgba(255,0,0,0.2)' },
+  //     { data: [], label: 'Outcome', borderColor: 'blue', backgroundColor: 'rgba(0,0,255,0.2)' },
+  //     { data: [], label: 'Revenue', borderColor: 'green', backgroundColor: 'rgba(0,255,0,0.2)' }
+  //   ]
+  // };
 
-  chartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    scales: {
-      x: {}, y: { beginAtZero: true }
-    }
-  };
+  // chartOptions: ChartConfiguration['options'] = {
+  //   responsive: true,
+  //   scales: {
+  //     x: {}, y: { beginAtZero: true }
+  //   }
+  // };
 
 
 
@@ -102,18 +102,18 @@ export class TransactionChartComponent {
   // });
 
 
-  applyFilter(): void {
-    const from = new Date(this.form.value.fromDate);
-    const to = new Date(this.form.value.toDate);
+  // applyFilter(): void {
+  //   const from = new Date(this.form.value.fromDate);
+  //   const to = new Date(this.form.value.toDate);
 
-    this.filteredTransactions = this.transactions.filter(t => {
-      const date = new Date(t.transactionDate);
-      return date >= from && date <= to;
-    });
+  //   this.filteredTransactions = this.transactions.filter(t => {
+  //     const date = new Date(t.transactionDate);
+  //     return date >= from && date <= to;
+  //   });
 
-    this.dateRangeText = `${this.form.value.fromDate} - ${this.form.value.toDate}`;
-    this.generateChartData();
-  }
+  //   this.dateRangeText = `${this.form.value.fromDate} - ${this.form.value.toDate}`;
+  //   this.generateChartData();
+  // }
 
   generateChartData(): void {
     const labels: string[] = [];
