@@ -18,15 +18,14 @@ import { FooterComponent } from "../../../shared/layout/footer/footer.component"
   templateUrl: './transaction-chart.component.html',
   styleUrl: './transaction-chart.component.scss',
   standalone: true,
-  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule, HttpClientModule, NgChartsModule, HeaderComponent, FooterComponent],
-
+  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule, NgChartsModule, HeaderComponent, FooterComponent],
+  providers: [ApiService, SnackBarUtil]
 })
 
 export class TransactionChartComponent implements OnInit {
 
   private apiService = inject(ApiService);
   private snackBar = inject(SnackBarUtil);
-  private router = inject(Router);
 
   transactions$: Observable<GroceryTransaction[]> = of([]);
   filteredTransactions: GroceryTransaction[] = [];
@@ -133,12 +132,6 @@ export class TransactionChartComponent implements OnInit {
     return `${day}/${month}/${year}`;
   }
 
-  // formatDateForDisplay(date: Date): string {
-  //   const day = String(date.getDate()).padStart(2, '0');
-  //   const month = String(date.getMonth() + 1).padStart(2, '0');
-  //   const year = date.getFullYear();
-  //   return `${day}/${month}/${year}`;
-  // }
 }
 
 
