@@ -20,7 +20,7 @@ import 'url-polyfill';
   templateUrl: './transaction-chart.component.html',
   styleUrl: './transaction-chart.component.scss',
   standalone: true,
-  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule,HttpClientModule,NgChartsModule,HeaderComponent,],
+  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule, HttpClientModule, NgChartsModule, HeaderComponent, FooterComponent],
 
   // imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule,HttpClientModule, NgChartsModule, HeaderComponent, FooterComponent],
   providers: [ApiService, SnackBarUtil,Router],
