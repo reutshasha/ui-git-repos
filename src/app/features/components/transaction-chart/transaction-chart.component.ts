@@ -12,26 +12,28 @@ import { ChartData, ChartOptions } from 'chart.js';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { HeaderComponent } from "../../../shared/layout/header/header.component";
 import { FooterComponent } from "../../../shared/layout/footer/footer.component";
+import 'url-polyfill';
+
 
 @Component({
   selector: 'app-transaction-chart',
   templateUrl: './transaction-chart.component.html',
   styleUrl: './transaction-chart.component.scss',
   standalone: true,
-  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule, NgChartsModule, HeaderComponent, FooterComponent],
-  providers: [ApiService, SnackBarUtil]
+  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule,HttpClientModule,NgChartsModule,HeaderComponent,],
+
+  // imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule,HttpClientModule, NgChartsModule, HeaderComponent, FooterComponent],
+  providers: [ApiService, SnackBarUtil,Router],
 })
 
 export class TransactionChartComponent implements OnInit {
 
   private apiService = inject(ApiService);
   private snackBar = inject(SnackBarUtil);
+  private router = inject(Router);
 
   transactions$: Observable<GroceryTransaction[]> = of([]);
   filteredTransactions: GroceryTransaction[] = [];
-
-  // startDate: Date = new Date('2021-06-01');
-  // endDate: Date = new Date('2021-12-31');
 
   startDate: string = this.formatDateToInput(new Date('2021-06-01'));
   endDate: string = this.formatDateToInput(new Date('2021-12-31'));
@@ -60,15 +62,7 @@ export class TransactionChartComponent implements OnInit {
   ngOnInit(): void {
     this.applyFilter();
   }
-  updateStartDate(value: string): void {
-    this.startDate = value;
-    console.log("updateStartDate" + this.startDate)
 
-  }
-  
-  updateEndDate(value: string): void {
-    this.endDate = value;
-  }
   applyFilter(): void {
     const formattedStartDate = this.formatDate(this.startDate);
     const formattedEndDate = this.formatDate(this.endDate);
@@ -131,7 +125,13 @@ export class TransactionChartComponent implements OnInit {
     const year = dateObj.getFullYear();
     return `${day}/${month}/${year}`;
   }
-
+  updateStartDate(value: string): void {
+    this.startDate = value;
+  }
+  
+  updateEndDate(value: string): void {
+    this.endDate = value;
+  }
 }
 
 

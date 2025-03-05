@@ -9,6 +9,8 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { CommonModule } from '@angular/common';
 import { SnackBarUtil } from '../../../../shared/utilities/snack-bar.util';
 import { AuthService } from '../../../../core/services/auth.service';
+import 'url-polyfill';
+
 
 @Component({
   selector: 'app-login',
