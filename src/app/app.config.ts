@@ -7,6 +7,8 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './core/services/auth.interceptor';
+import * as NgCharts from 'ng2-charts';
+console.log(NgCharts);
 
 
 export const appConfig: ApplicationConfig = {
@@ -18,6 +20,7 @@ export const appConfig: ApplicationConfig = {
   provideClientHydration(withEventReplay()),
   importProvidersFrom(MatSnackBarModule),
   importProvidersFrom(NoopAnimationsModule),
+  importProvidersFrom(NgCharts.NgChartsModule),
 
   ]
 };

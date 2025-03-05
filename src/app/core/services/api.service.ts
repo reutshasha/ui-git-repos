@@ -10,7 +10,7 @@ import { GroceryTransaction } from '../../shared/models/GroceryTransaction';
 })
 export class ApiService {
 
-  private baseUrl = environment.SERVER_BASE_API_URL; 
+  private baseUrl = environment.SERVER_BASE_API_URL;
 
   private http = inject(HttpClient);
 
@@ -24,14 +24,9 @@ export class ApiService {
   // }
   getTransactionsByDateRange(startDate: string, endDate: string): Observable<GroceryTransaction[]> {
     const params = new HttpParams()
-       .set('startDate', startDate)
+      .set('startDate', startDate)
       .set('endDate', endDate);
-    // .set('startDate', startDate.toISOString()) // המרת התאריך לפורמט ISO
-    // .set('endDate', endDate.toISOString());   // המרת התאריך לפורמט ISO
-      debugger
-      console.log('startDate.toISOString()' + startDate );
-      // console.log('startDate' + startDate );
-    return this.http.get<GroceryTransaction[]>(this.baseUrl + ' Grocery/transactions', { params });
+    return this.http.get<GroceryTransaction[]>(this.baseUrl + 'Grocery/transactions', { params });
   }
 
   searchRepositories(query: string, page: number, perPage: number): Observable<GitHubSearchResult> {
