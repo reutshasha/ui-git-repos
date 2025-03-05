@@ -5,7 +5,6 @@ import { AngularMaterialModule } from '../../../angular-material.module';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { GroceryTransaction } from '../../../shared/models/GroceryTransaction';
 import { NgChartsModule } from 'ng2-charts';
 import { ChartData, ChartOptions } from 'chart.js';
@@ -20,17 +19,14 @@ import 'url-polyfill';
   templateUrl: './transaction-chart.component.html',
   styleUrl: './transaction-chart.component.scss',
   standalone: true,
-  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule, HttpClientModule, NgChartsModule, HeaderComponent, FooterComponent],
-
-  // imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule,HttpClientModule, NgChartsModule, HeaderComponent, FooterComponent],
-  providers: [ApiService, SnackBarUtil,Router],
+  imports: [AngularMaterialModule, FormsModule, RouterModule, CommonModule, NgChartsModule, HeaderComponent, FooterComponent],
+  providers: [ApiService, SnackBarUtil, Router],
 })
 
 export class TransactionChartComponent implements OnInit {
 
   private apiService = inject(ApiService);
   private snackBar = inject(SnackBarUtil);
-  private router = inject(Router);
 
   transactions$: Observable<GroceryTransaction[]> = of([]);
   filteredTransactions: GroceryTransaction[] = [];
@@ -39,25 +35,8 @@ export class TransactionChartComponent implements OnInit {
   endDate: string = this.formatDateToInput(new Date('2021-12-31'));
 
   headerStartDate: string = this.formatDateToInput(new Date('2021-06-01'));
-  headerEndDate : string = this.formatDateToInput(new Date('2021-12-31'));
-  
-  chartData: ChartData<'line'> = {
-    labels: [],
-    datasets: [
-      { label: 'Income', data: [], borderColor: 'red', fill: false },
-      { label: 'Outcome', data: [], borderColor: 'blue', fill: false },
-      { label: 'Revenue', data: [], borderColor: 'green', fill: false },
-    ],
-  };
+  headerEndDate: string = this.formatDateToInput(new Date('2021-12-31'));
 
-  chartOptions: ChartOptions<'line'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-  };
-
-  formatDateToInput(date: Date): string {
-    return date.toISOString().split('T')[0]; // yyyy-MM-dd
-  }
 
   ngOnInit(): void {
     this.applyFilter();
@@ -101,7 +80,7 @@ export class TransactionChartComponent implements OnInit {
       return transactionTime >= start && transactionTime <= end;
     });
   }
-  
+
 
   updateChart(filtered: GroceryTransaction[]): void {
     this.chartData.labels = filtered.map((t) => new Date(t.transactionDate).toLocaleDateString());
@@ -110,7 +89,23 @@ export class TransactionChartComponent implements OnInit {
     this.chartData.datasets[2].data = filtered.map((t) => t.revenue);
   }
 
+  chartData: ChartData<'line'> = {
+    labels: [],
+    datasets: [
+      { label: 'Income', data: [], borderColor: 'red', fill: false },
+      { label: 'Outcome', data: [], borderColor: 'blue', fill: false },
+      { label: 'Revenue', data: [], borderColor: 'green', fill: false },
+    ],
+  };
 
+  chartOptions: ChartOptions<'line'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
+  formatDateToInput(date: Date): string {
+    return date.toISOString().split('T')[0];
+  }
   formatDate(date: Date | string): string {
     let dateObj: Date;
 
@@ -128,7 +123,6 @@ export class TransactionChartComponent implements OnInit {
   updateStartDate(value: string): void {
     this.startDate = value;
   }
-  
   updateEndDate(value: string): void {
     this.endDate = value;
   }

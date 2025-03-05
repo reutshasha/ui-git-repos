@@ -1,154 +1,77 @@
-// .filter-container {
-//     display: flex;
-//     align-items: center;
-//     justify-content: flex-start;
-//     gap: 15px;
-//     background: #f8f9fa;
-//     padding: 10px 20px;
-//     border-radius: 8px;
-//     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-//     margin-bottom: 20px;
-  
-//     label {
-//       font-weight: bold;
-//       color: #333;
-  
-//       input {
-//         margin-left: 5px;
-//         padding: 5px 10px;
-//         border: 1px solid #ccc;
-//         border-radius: 5px;
-//         font-size: 14px;
-//         transition: border-color 0.3s ease-in-out;
-  
-//         &:focus {
-//           border-color: #007bff;
-//           outline: none;
-//         }
-//       }
-//     }
-  
-//     button {
-//       background: #007bff;
-//       color: white;
-//       font-weight: bold;
-//       border: none;
-//       padding: 8px 15px;
-//       border-radius: 5px;
-//       cursor: pointer;
-//       transition: background 0.3s ease-in-out;
-  
-//       &:hover {
-//         background: #0056b3;
-//       }
-//     }
-//   }
-  
-//   canvas {
-//     width: 100% !important;
-//     max-height: 400px;
-//     background: white;
-//     border-radius: 8px;
-//     padding: 10px;
-//     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-//   }
-  
 .main-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #add8e6;
-    color: #333;
-  
-    span {
-      margin: 0 1rem;
-    }
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #add8e6;
+  color: #333;
+
+  span {
+    margin: 0 1rem;
   }
-  
-  .date-filter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
-  
-    label {
-      margin-right: 1rem;
-    }
-  
-    input[type="date"] {
-      margin-right: 1rem;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-  
-    button {
-      padding: 0.5rem 1rem;
-      background-color: #007bff; /* צבע כחול */
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  }
-  
-  .chart-container {
-    width: 80%;
-    margin: 2rem auto;
-  }
-  
-  .transactions {
-    margin-top: 2rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
+}
+
+.date-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     border-radius: 4px;
-  
-    p {
-      margin: 0.5rem 0;
-    }
+    cursor: pointer;
   }
+}
+
+.transactions {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  p {
+    margin: 0.5rem 0;
+  }
+}
 
 .chart-container {
-    width: 100%;
-    height: 400px;
-    margin: 20px 0;
-  
-    canvas {
-      width: 100% !important;
-      height: 100% !important;
-    }
+  width: 100%;
+  height: 350px;
+  margin: 20px 0;
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
   }
-  
-  .date-filter {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  
-    label {
-      font-size: 16px;
-      margin-right: 10px;
-    }
-  
-    input {
-      width: 150px;
-      padding: 5px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+}
+
+.date-filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 16px;
+    margin-right: 3px;
   }
-  
-  p {
+
+  input {
+    width: 150px;
+    padding: 5px;
     font-size: 14px;
-    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
-  
-//   app-footer {
-//     display: block;
-//     background-color: lightblue;
-//     padding: 1rem;
-//   }
+}
+
+p {
+  font-size: 14px;
+  margin: 5px 0;
+}

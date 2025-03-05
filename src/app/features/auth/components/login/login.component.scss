@@ -1,7 +1,7 @@
 // @use '../../../../styles.scss' as *;
 
-$primary-color: #3f51b5; 
-$secondary-color: #5a72ff; 
+$primary-color: #3f51b5;
+$secondary-color: #5a72ff;
 
 .login-container {
   max-width: 400px;
@@ -41,7 +41,6 @@ $secondary-color: #5a72ff;
 .btn {
   width: 100%;
   padding: 10px;
-  // background-color: var(--color-primary) !important;
   background-color: $secondary-color;
   color: white;
   border: none;

@@ -18,7 +18,7 @@ import { ApiService } from './core/services/api.service';
 
 })
 export class AppComponent {
-  title = 'git-repositories';
+  title = 'groceryShop';
 
 }
 
